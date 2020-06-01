@@ -4,15 +4,14 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import CardDetails from './Components/CardDetails';
-import CardSelectorContainer from './Components/CardSelector';
-import SortableCardTable from './Components/SortableCardTable'
+import HomePage from './HomePage.js'
 
 
 ReactDOM.render(
 	//<CardSelectorContainer />,
-	//<CardDetails cardid="112" />,
-	<SortableCardTable />,
+	//<CardDetails cardid="244" size="extra-small"/>,
+	//<SortableCardTable />,
+	<HomePage />,
 	document.getElementById('root')
 );
 

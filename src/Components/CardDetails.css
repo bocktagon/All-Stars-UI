@@ -5,3 +5,31 @@
 .stats-info-row { 
 	padding-top: 5px;
 }
+
+.extra-small-container {
+	max-width: 128px;
+}
+
+.small-container {
+	max-width: 256px;
+}
+
+.tight-cell {
+	width: 1%;
+}
+
+.centered-content {
+	text-align: center;
+}
+
+.xs-lb-dropdown {
+	width: 128px;
+}
+
+.stats-table {
+	margin-bottom: 0px;
+}
+
+.pad-top {
+	padding-top: 5px;
+}

@@ -6,5 +6,7 @@ export default {
 	CARD_BY_ID_PATH: '/cards/id/',
 	ICON_NORMAL: '/iconN.jpg',
 	ICON_IDOLIZED: '/iconI.jpg',
-	IDOL_ICON_PATH: '/img/icons/'
+	IDOL_ICON_PATH: '/img/icons/idols/',
+	ICON_PATH: '/img/icons/',
+	SEARCH_PATH: '/cards/search?query='
 }

@@ -39,6 +39,8 @@ class CardTableEntry extends React.Component {
 				return stats.lb4
 			case "5":
 				return stats.lb5
+			default:
+				return "error"
 		}
 	}
 
@@ -98,6 +100,7 @@ class CardTableEntry extends React.Component {
 				<td className="stats technique">
 					{this.lbHandler(this.props.cardData.technique)}
 				</td>
+				{this.props.extraColumns}
 			</tr>
 		)
 	}

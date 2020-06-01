@@ -1,0 +1,11 @@
+.table-results-header {
+	text-align: center;
+}
+
+.table-button-header {
+	width: 1%;
+}
+
+.size-limited-button {
+	max-width: 158px;
+}
