@@ -88,7 +88,7 @@ class HomePage extends React.Component {
 					Google instance spins back up. I'll fix that ~eventually~.
 				</p>
 				<p>
-					Right now the page only works with URs <s>because they're the only cards that matter</s> to save on resources. Eventually I'll
+					Right now the page only loads URs <s>because they're the only cards that matter</s> to save on resources. Eventually I'll
 					add more ways to control which cards are fetched (I'd like to at least have a button to get SRs too).
 				</p>
 				<p>

@@ -64,7 +64,7 @@ class SortableCardTable extends React.Component {
 			<Table variant="dark" bordered size="sm" id="cardTable">
 				<thead>
 					<tr>
-						<th colSpan="4" className="info-header">Click a stat to sort on it. Click the drop-down to choose an LB.</th>
+						<th colSpan="5" className="info-header">Click a stat to sort on it. Click the drop-down to choose an LB.</th>
 						<th colSpan="3">
 							<Dropdown>
 								<Dropdown.Toggle block>
@@ -82,7 +82,7 @@ class SortableCardTable extends React.Component {
 						</th>
 					</tr>
 					<tr>
-						<th colSpan="4">Card Info</th>
+						<th colSpan="5">Card Info</th>
 						<th><Button variant={this.state.currentSortType === "appeal" ? "light" : "outline-light"} onClick={this.handleSortChanged} sorttype="appeal">Appeal</Button></th>
 						<th><Button variant={this.state.currentSortType === "stamina" ? "light" : "outline-light"} onClick={this.handleSortChanged} sorttype="stamina">Stamina</Button></th>
 						<th><Button variant={this.state.currentSortType === "technique" ? "light" : "outline-light"} onClick={this.handleSortChanged} sorttype="technique">Technique</Button></th>

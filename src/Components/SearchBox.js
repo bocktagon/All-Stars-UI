@@ -99,7 +99,7 @@ class SearchBox extends React.Component {
 					<Table variant="dark" bordered size="sm" id="cardTable">
 						<thead>
 							<tr>
-								<th colSpan="4" className="table-results-header"><h5>Search Results</h5></th>
+								<th colSpan="5" className="table-results-header"><h5>Search Results</h5></th>
 								<th colSpan="3" className="table-button-header">
 									<Dropdown className="size-limited-button">
 										<Dropdown.Toggle block>

@@ -9,6 +9,8 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
+import LazyLoad from 'react-lazy-load';
+
 
 class CardTableEntry extends React.Component {
 
@@ -56,19 +58,28 @@ class CardTableEntry extends React.Component {
 
 		let normalCardIconUrl = CONSTANTS.API_URL + CONSTANTS.CARD_ICON_PATH + this.props.cardData.id + CONSTANTS.ICON_NORMAL;
 		let idolizedCardIconUrl = CONSTANTS.API_URL + CONSTANTS.CARD_ICON_PATH + this.props.cardData.id + CONSTANTS.ICON_IDOLIZED;
-		let idolIconUrl = CONSTANTS.API_URL + CONSTANTS.IDOL_ICON_PATH + this.props.cardData.idol.firstName + ".png"
+		let idolIconUrl = CONSTANTS.API_URL + CONSTANTS.IDOL_ICON_PATH + this.props.cardData.idol.firstName.toLowerCase() + ".png"
 
 		return (
 			<tr className="table-row">
 				<td className="icon-cell normal-icon">
-					<Image fluid rounded src={normalCardIconUrl} alt="Icon_N" />
+					<LazyLoad height={64} offsetVertical={100} >
+						<Image fluid rounded src={normalCardIconUrl} alt="Icon_N" />
+					</LazyLoad>
 				</td>
 				<td className="icon-cell idolized-icon">
-					<Image fluid rounded src={idolizedCardIconUrl} alt="Icon_I" />
+					<LazyLoad height={64} offsetVertical={100} >
+						<Image fluid rounded src={idolizedCardIconUrl} alt="Icon_I" />
+					</LazyLoad>
+				</td>
+				<td className="icon-cell idol-icon">
+					<LazyLoad height={40} width={40} offsetVertical={100} >
+						<Image fluid src={idolIconUrl} />
+					</LazyLoad>
 				</td>
 				<td className="info-box">
 					<div className="info-container">
-						<h5><Image fluid src={idolIconUrl} /> {this.props.cardData.idol.firstName} {this.props.cardData.idol.lastName}</h5>
+						{this.props.cardData.idol.firstName} {this.props.cardData.idol.lastName}
 						<ul>
 							<li>{this.props.cardData.title}</li>
 							<li>{this.props.cardData.idolizedTitle}</li>
