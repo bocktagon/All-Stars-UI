@@ -1,0 +1,22 @@
+.red-col button {
+	background: red;
+	background-color: red;
+	border-color: black;
+}
+
+.green-col button {
+	background: green;
+	background-color: green;
+	border-color: black;
+}
+
+.blue-col button {
+	background: blue;
+	background-color: blue;
+	border-color: black;
+}
+
+.strategy-col {
+	padding-left: 17px;
+	padding-right: 17px;
+}

@@ -14,8 +14,6 @@ export const cleanIdolGroupName = (name) => {
 export const parseBuffTarget = (card) => {
 	var buffType = card.passiveAbility.buffedStat.type;
 
-	console.log(card.passiveAbility.buffTarget.target)
-
 	switch(card.passiveAbility.buffTarget.target) {
 		case "self":
 			return "Own " + buffType

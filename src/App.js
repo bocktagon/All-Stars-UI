@@ -13,17 +13,19 @@ import Nav from 'react-bootstrap/Nav'
 import Home from './Pages/Home.js';
 import StatsTable from './Pages/StatsTable.js'
 import Search from './Pages/Search.js'
+import TeamBuilder from './Pages/TeamBuilder.js'
 
 export default function App() {
 	return (
-		  <Container>
+		  <Container className="main-container">
 			  <Router>
 					<div>
 						<Navbar bg="dark" variant="dark">
 							<Navbar.Brand href="/">All Stars UI</Navbar.Brand>
 							<Nav className="mr-auto">
-								<Nav.Link href="/search">Search</Nav.Link>
-								<Nav.Link href="/statsTable">Stats Table</Nav.Link>
+								<Nav.Link href="/Search">Search</Nav.Link>
+								<Nav.Link href="/StatsTable">Stats Table</Nav.Link>
+								<Nav.Link href="/TeamBuilder">Team Builder</Nav.Link>
 							</Nav>
 							<Nav>
 								<Nav.Link href="https://github.com/bocktagon/All-Stars-UI">Project GitHub</Nav.Link>
@@ -32,11 +34,14 @@ export default function App() {
 						</Navbar>
 						
 						<Switch>
-							<Route path="/search">
+							<Route path="/Search">
 								<Search />
 							</Route>
-							<Route path="/statsTable">
+							<Route path="/StatsTable">
 								<StatsTable />
+							</Route>
+							<Route path="/TeamBuilder">
+								<TeamBuilder />
 							</Route>
 							<Route path="/">
 								<Home />

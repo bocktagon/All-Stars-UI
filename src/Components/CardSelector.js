@@ -2,8 +2,8 @@ import React from 'react';
 import CONSTANTS from '../Constants.js'
 
 import Dropdown from 'react-bootstrap/Dropdown'
-
-import CardDetails from './CardDetails';
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 class CardSelector extends React.Component {
 
@@ -16,15 +16,18 @@ class CardSelector extends React.Component {
 			idolOptions: [],
 			cardOptions: [],
 			cardListElements: [],
-			selectedCard: null
+			selectedCard: null,
+			showModal: false
 		}
 
 		this.handleIdolSelectMenu = this.handleIdolSelectMenu.bind(this);
 		this.handleCardSelectMenu = this.handleCardSelectMenu.bind(this);
+		this.handleCloseModal = this.handleCloseModal.bind(this)
+		this.handleShowModal = this.handleShowModal.bind(this)
 	}
 
 	componentDidMount() {
-		fetch(CONSTANTS.API_URL + 'ref/idols')
+		fetch(CONSTANTS.API_URL + CONSTANTS.IDOLS_REF_PATH)
 			.then(res => res.json())
 			.then((data) => {
 				this.setState({idolOptions: data})
@@ -34,7 +37,7 @@ class CardSelector extends React.Component {
 
 	handleIdolSelectMenu(event) {
 		this.setState({idolSelectText: event.target.innerText})
-		fetch(CONSTANTS.API_URL + 'cards/idol/' + event.target.innerText)
+		fetch(CONSTANTS.API_URL + CONSTANTS.CARDS_BY_IDOL_PATH + event.target.innerText)
 			.then(res => res.json())
 			.then((data) => {
 				this.setState({
@@ -52,22 +55,27 @@ class CardSelector extends React.Component {
 
 		this.setState({
 			cardSelectText: card.idolizedTitle,
-			selectedCard: card
+			selectedCard: card,
+			showModal: false
 		})
+
+		this.props.cardSelectedCallback(card)
+	}
+
+	handleCloseModal() {
+		this.setState({showModal: false})
+	}
+
+	handleShowModal() {
+		this.setState({showModal: true})
 	}
 
 	render() {
 		const nameOptions = this.state.idolOptions.map((idol, key) =>
 				<Dropdown.Item key={idol.id} onClick={this.handleIdolSelectMenu}>{idol.firstName}</Dropdown.Item>);
 
-		let card;
-		if(this.state.selectedCard != null) {
-			card = <CardDetails cardData={this.state.selectedCard} />
-		}
-
-		return (
-			<div id="selector-container container-fluid">
-				<Dropdown block>
+		const buttonMenu = <div id="selector-container container-fluid">
+				<Dropdown block="True">
 					<Dropdown.Toggle id="dropdown-basic" block>
 						{this.state.idolSelectText}
 					</Dropdown.Toggle>
@@ -75,7 +83,7 @@ class CardSelector extends React.Component {
 						{nameOptions}
 					</Dropdown.Menu>
 				</Dropdown>
-				<Dropdown block>
+				<Dropdown block="True">
 					<Dropdown.Toggle id="dropdown-basic" block>
 						{this.state.cardSelectText}
 					</Dropdown.Toggle>
@@ -83,11 +91,35 @@ class CardSelector extends React.Component {
 						{this.state.cardListElements}
 					</Dropdown.Menu>
 				</Dropdown>
-				<div id="cardContainer">
-					{card}
+			</div>;
+
+		if(this.props.menuMode === "modal") {
+			return (
+				<div>
+					<Button className="select-card-button" onClick={this.handleShowModal} block>
+						Select Card
+					</Button>
+
+					<Modal show={this.state.showModal} onHide={this.handleCloseModal} centered>
+						<Modal.Header closeButton>
+							<Modal.Title>Select a Card</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							{buttonMenu}
+						</Modal.Body>
+						<Modal.Footer>
+							<Button variant="secondary" onClick={this.handleCloseModal}>
+								Cancel
+							</Button>
+						</Modal.Footer>
+					</Modal>
 				</div>
-			</div>
-		)
+			)
+		} else {
+			return (
+				[buttonMenu]
+			)
+		}
 	}
 }
 

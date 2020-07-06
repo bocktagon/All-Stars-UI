@@ -20,7 +20,7 @@ class CardDetails extends React.Component {
 		var dataReady;
 		var cardData;
 
-		if(props.cardData === undefined) {
+		if(props.cardData === undefined || props.cardData === null) {
 			dataReady = false
 			cardData = null
 		} else {
@@ -50,6 +50,7 @@ class CardDetails extends React.Component {
 	}
 
 	handleLBChanged(event) {
+		this.props.lbChangedCallback(event.target.getAttribute("lb"))
 		this.setState({XSselectedLB: event.target.getAttribute("lb")})
 	}
 

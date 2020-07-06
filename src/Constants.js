@@ -8,5 +8,7 @@ export default {
 	ICON_IDOLIZED: '/iconI.jpg',
 	IDOL_ICON_PATH: '/img/icons/idols/',
 	ICON_PATH: '/img/icons/',
-	SEARCH_PATH: '/cards/search?query='
+	SEARCH_PATH: '/cards/search?query=',
+	IDOLS_REF_PATH: '/ref/idols',
+	CARDS_BY_IDOL_PATH: '/cards/idol/'
 }
